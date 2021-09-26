@@ -1114,28 +1114,7 @@ self.actually_send_emails:  # If isn't legit email and am sending real emails
         self.win_listb_keys_address.destroy()
         self.win_listb_keys_address_is_open = False
 
-
-def collect_all_records():
-    print('Begin____________________________')
-    db_connection = sqlite3.connect('GeoCoin')
-    cursor = db_connection.cursor()
-    print('walletss_info')
-    a = cursor.execute('SELECT * FROM walletss_info')
-    for p in a:
-        print(p)
-    print('____________________________')
-    print('transactions_info')
-    a = cursor.execute('SELECT * FROM transactions_info')
-    for p in a:
-        print(p)
-    print('____________________________')
-    print('deposits_info')
-    a = cursor.execute('SELECT * FROM deposits_info')
-    for p in a:
-        print(p)
-    print('End____________________________')
-
-
-#collect_all_records()
+        
 blockchain()
-#collect_all_records()
+
+
