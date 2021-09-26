@@ -4,7 +4,7 @@ import random
 from tkinter import *
 import sqlite3
 from tkinter import messagebox
-import create_verification_email, customer_service_help_password as password
+import create_verification_email
 import send_test_email
 import easygui
 
