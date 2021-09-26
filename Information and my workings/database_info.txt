@@ -1,0 +1,98 @@
+Database is called GeoCoin
+Table names: wallet_info and transactions_info
+
+Do we need AUTOINCREMENT?
+
+Description of data types for columns of tables:
+
+_____wallets_info_____
+
+# Mark keys as used when are encased in <> (and longer length)
+ addresses as used when they have a preceding- 11 (and longer length)
+ mark transaction id as latest block in chain with preceding- 99 (and longer length)
+
+$ wallet_id- is INTEGER primary key as the table needs a unique identifier for
+each record
+$ wallet_name is TEXT so can include numbers and letters so if one wants a number
+in their name it is allowed
+$ GCoin_amount is REAL so can record how much currency the user has currently
+needs to be REAL so can store decimal values
+$ no_of_transactions is INTEGER so can store this info for the user to view, if
+interested and only needs to be to 0 decimal places
+$ public_keys are TEXT so can store numbers and letters of codes
+$ private_keys are TEXT so can store numbers and letters of codes
+$ addresses are INTEGER so can store just numbers as i wanted this to be different
+to the aforementioned keys
+$ passnumber is INTEGER as only needs to be numbers so is correct type, min length- 6
+$ date_of_creation is TEXT as can store it with letters or just numbers, and
+when extracted will be good as will already be a str() so won't have to change
+it to int() (which i'd probably have to do) for manipulation
+
+_____transactions_info_____
+
+
+# Can track exactly who is sendee and sender because of the addresses in use
+$ transaction_id is INTEGER and PRIMARY KEY as unique identifier needed and
+should be a number i reckon. Also transaction_id is our hash for connecting blocks
+in the chain. there are no 9s in this unless it is to represent that the current
+transaction id is the latest one. 10 digits long when is a previous block.
+$ sender_wallet_name is TEXT so can be number and letters for storing the name
+of wallet sent from in particular transaction
+$ sender_address is INTEGER as the addresses are integers for all users
+$ receiver_wallet_name is TEXT so can be number and letters for storing the name
+of wallet sent to in particular transaction
+$ receiver_address is INTEGER as the addresses are integers for all users
+$ transaction_amount is REAL as the amount is an integer but will have decimal
+places so REAL works as a FLOAT for this
+$ date_of_transaction is more important than date of wallet creation will be nice
+to see a record of whens for the user. This is TEXT so can store for easy
+manipulation, as seen above, and can have str() and/or int()s depending
+on how i want to format the database input
+
+
+table queries:-
+
+
+qry_wallet_info = '''CREATE TABLE IF NOT EXISTS wallets_info(
+wallet_id INTEGER PRIMARY KEY,
+wallet_name TEXT,
+GCoin_amount REAL,
+no_of_transactions INTEGER,
+public_keys TEXT,
+private_keys TEXT,
+addresses INTEGER,
+passnumber INTEGER,
+date_of_creation TEXT
+)'''
+
+qry_wallets_info = '''CREATE TABLE IF NOT EXISTS walletss_info(
+wallet_id INTEGER PRIMARY KEY,
+wallet_name TEXT,
+GCoin_amount REAL,
+no_of_transactions INTEGER,
+public_keys BLOB,
+private_keys BLOB,
+addresses INTEGER,
+passnumber INTEGER,
+date_of_creation TEXT
+email_address
+)'''
+
+qry_transactions_info = '''CREATE TABLE IF NOT EXISTS transactions_info(
+transaction_id INTEGER PRIMARY KEY,
+sender_wallet_name TEXT,
+sender_address INTEGER,
+receiver_wallet_name TEXT,
+receiver_address INTEGER,
+transaction_amount REAL, #float
+date_of_transaction TEXT
+)'''
+
+qry_deposits_info = '''CREATE TABLE IF NOT EXISTS deposits_info(
+deposit_id INTEGER PRIMARY KEY,
+deposit_or_withdraw TEXT,
+deposit_withdraw_amount REAL,
+wallet_id INTEGER,
+wallet_name TEXT,
+date_of_deposit TEXT)
+'''

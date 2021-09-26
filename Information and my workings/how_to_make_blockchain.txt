@@ -1,0 +1,57 @@
+Ingredients- i will need:
+
+A hashing function- always return same length of output, always the same for a given input
+
+Create wallet funct- which allows to allocate a name,
+Makes seed phrase (-https://medium.com/bitbees/python-code-to-manually-create-12-24-worded-seed-and-passphrase-without-trusting-bitcoin-wallets-9d158535dfc6)
+and calls below
+
+Function that (can be called manually) called as well as in above funct- if creating new wallet,
+creates 4 pub and priv keys and addresses. Otherwise, when called will create 1 set of keys and address
+
+A way to login- a CryptoWallet: with private keys to allow entry
+
+
+Database- where each record stores info about a wallet's: id, Name, GCoin amount, number of transactions, 
+pub keys, priv keys, and addresses, password, date of creation
+Present a user's info by retrieving all of it from the above
+
+Database- storing all transactions and their infos: transaction (hash) id- - prev hash (4chars) + transaction id (manipulated in some way- (8chars)) + new hash id (4chars)), 
+sender wallet name, sender address, receiver wallet name, receiver address, transaction amount, date of transaction
+This is our blockchain, connected via the hash ids
+
+Add our genesis block in transactions history database
+
+Login function
+
+
+Send money function- ***below***
+How will send money:  
+
+To verify legitimacy of transaction- Generate six digit code and send to email address 
+Enter that code + x, x, x positions in private key for send money. No need to verify when receive money, only private key 
+needed to accept money sent to them
+
+
+If the user's wallet has enough GCoin to send the stated amount then:
+	Allow entry of sender and receiver addresses into program and have them processed so,
+
+	Enter the receiver's address associated with their chosen private key
+
+	In database of people's wallets locate the wallet name from the addresses -> public key -> private key -> wallet name, 
+	I think and increment and decrement the aforementioned amount,
+	Increment the number of transactions and 
+	Create new key pair + address
+	In database of transactions (our Blockchain) add a new record of transaction
+
+Each block contains transaction info- transaction id, sender- address, receiver- address, GCoin amount
+
+
+Genesis block has a hash- identify block and contents. If hash changes the block has had info change
+2ND block contains its hash and hash of Genesis
+3RD block contains its hash and hash of 2nd
+
+
+
+
+
